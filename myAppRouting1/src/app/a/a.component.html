@@ -1,0 +1,12 @@
+<p>
+ {{usuarios|json}}
+</p>
+
+<section>
+  <div>Usuarios</div>
+  <ul *ngFor="let aUser of usuarios">
+    <li>
+     {{aUser.uid}} - {{aUser.nombre}} - {{aUser.email}} - {{aUser.edad}}
+    </li>
+  </ul>
+</section>
