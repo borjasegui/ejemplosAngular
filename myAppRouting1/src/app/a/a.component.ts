@@ -10,11 +10,22 @@ import { UserService } from '../services/user.service';
 export class AComponent implements OnInit {
 
   usuarios: User[] = null;
+  valor: string = '';
 
-  constructor(private _userService:UserService) { }
+  constructor(private _userService: UserService) { }
 
   ngOnInit() {
-    this.usuarios=this._userService.getUsuarios();
+    this.usuarios = this._userService.getUsuarios();
+  }
+  filtraPorNombre() {
+    if (this.usuarios) {
+      return this.usuarios.filter(unU => {
+        return (unU.nombre.indexOf(this.valor) >= 0);
+      });
+    } else {
+      return this.usuarios;
+    }
   }
 
 }
+

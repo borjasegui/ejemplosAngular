@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pedidos } from '../models/Pedido';
+import { PedidoService } from '../services/pedido.service';
 
 @Component({
   selector: 'app-b',
@@ -8,18 +9,13 @@ import { Pedidos } from '../models/Pedido';
 })
 export class BComponent implements OnInit {
   pedidos: Pedidos[] = null;
+  valor: string = '';
 
-  constructor() { }
+  constructor(private _pedidoService: PedidoService) { }
 
   ngOnInit() {
-    this.pedidos=[
-      new Pedidos(1,'carcasa',345),
-      new Pedidos(2,'dildo',135),
-      new Pedidos(3,'compresa',34556),
-      new Pedidos(4,'anillo',32423),
-      new Pedidos(5,'guantes',6356),
-      new Pedidos(6,'polvoron',45636),
-    ];
+    this.pedidos = this._pedidoService.getPedidos();
+  
   }
 
 }
